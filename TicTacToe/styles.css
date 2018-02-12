@@ -1,0 +1,28 @@
+h1 {
+    text-align: center;
+    margin: 30px auto ;
+}
+
+table {
+    margin: auto;
+}
+
+td {
+    width:100px;
+    height: 100px;
+    /* background-color: pink; */
+}
+
+
+.r2 {
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    /* border-collapse: collapse */
+}
+
+.c2 {
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    /* border-collapse: collapse; */
+}
+
