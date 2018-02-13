@@ -15,7 +15,7 @@ Image Links
 - https://images.unsplash.com/photo-1439694458393-78ecf14da7f9?dpr=2&fit=crop&fm=jpg&h=825&q=50&w=1450
 
 
-===========
+============
 The Colors
 ===========
 DARK BLUE: #2c3e50
