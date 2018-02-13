@@ -1,5 +1,6 @@
 body {
     border: 15px solid #ddd6d6;
+    border-radius: 8px;
     padding:15px;
     /* set the max width of the element */
     max-width:700px;  
@@ -7,6 +8,51 @@ body {
     *   when it can no longer be 700px wide */
     width:80%;
     margin:15px auto;
-
-
+    /* set the font for the document since it is used everywhere- get from Google */
+    font-family: Source Sans Pro, sans-serif;
 }
+
+.p1quote { 
+/* set the line to the left of the first paragraphs in each artile
+    it is acutually just a left border with padding */
+    border-left: 8px solid #bebcbc;
+    padding-left: 5px;
+}
+
+.date {
+    color:#454592;
+    text-transform: uppercase;
+    /* sue rem instead of em or px sets the value on the root size in documetn
+        this is a good way to get proportional fonts and spacing for the document */
+    letter-spacing: 0.2rem;
+    /* use rem for font-size sets the font based on the root size good way to set proportional 
+        fonts in a document */
+    font-weight: 700;
+    margin:5px;
+}
+
+h2 {
+    color:#131010;
+    /* same as above use rem to get proportional spacing and size easier */
+    letter-spacing: 0.2rem;
+    font-size: 2rem;
+}
+
+h1 {
+    color: #131010;
+    /* same as above use rem to get proportional spacing and size easier */
+    /* letter-spacing: 0.2rem; */
+    font-size: 2.4rem;
+}
+
+hr {
+    /* found on codepen 18 hr styles */
+    height: 10px;
+    border: 0;
+    box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+.post {
+    margin-bottom:15px;
+}
+/* font-family: 'Source Sans Pro', sans-serif; */
