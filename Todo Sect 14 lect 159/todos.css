@@ -1,0 +1,12 @@
+
+/* create a class done */
+
+.done {
+
+text-decoration-line: line-through;
+
+}
+
+.selected {
+    color:green;
+}
