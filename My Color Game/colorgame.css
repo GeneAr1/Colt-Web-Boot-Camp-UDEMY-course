@@ -1,0 +1,23 @@
+
+body {
+    background-color: #232323;
+}
+
+h1 {
+    color: white;
+}
+/* using width 30% and float to get the divs on the same line horizontal the 30% 
+    is what makes the image three accross each dive takes 30% leaving 10 left for spacing*/
+
+.square {
+    width: 30%;
+    background: yellow;
+    padding-bottom: 30%;
+    float: left;
+    margin:1.66%;
+}
+
+#container {
+    max-width: 600px;
+    margin: 0 auto;
+}
