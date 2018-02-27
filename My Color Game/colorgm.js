@@ -1,14 +1,17 @@
 // alert("connected");
 
 // set up array of the 6 colors
-var colors = [
-    "rgb(255, 0, 0)",
-    "rgb(255, 255, 0)",
-    "rgb(0, 255, 0)",
-    "rgb(0, 255, 255)",
-    "rgb(0, 0, 255)",
-    "rgb(255, 0, 255)"
-]
+// var colors = [
+//     "rgb(255, 0, 0)",
+//     "rgb(255, 255, 0)",
+//     "rgb(0, 255, 0)",
+//     "rgb(0, 255, 255)",
+//     "rgb(0, 0, 255)",
+//     "rgb(255, 0, 255)"
+// ]
+
+// set color array by calling generaterandomcolors funtion will take one argument number of colors to generate
+var colors = generateRandomColors(6);
 
 // loop through the array and assign the squares each on of the colors later 
 // we can randomize first get all the squares out ot the document
@@ -16,6 +19,7 @@ var colors = [
 var squares = document.querySelectorAll(".square");
 // var pickedColor = colors[3]; // will randomize later
 var pickedColor = pickColor();
+var h1 = document.querySelector("h1");
 
 messageDisplay = document.getElementById("message");
 
@@ -40,6 +44,7 @@ for (var i = 0; i < squares.length; i++) {
             // alert("correct");
             messageDisplay.textContent = "correct";
             ChangeColors(clickedColor);
+            h1.style.background = clickedColor;
         } else {
             // alert("wrong"); 
             //you want to fade the color square if wrong incorrect
@@ -65,5 +70,32 @@ function pickColor(){
     // Math.random returns numbers between 0 and 1 but not including 1 than use Math.floor to lose the after decimal
     var random = Math.floor(Math.random()* colors.length);
     return colors[random];
-
 };
+
+function generateRandomColors(num){
+// make an array
+var arr = [];
+// add num random colors to array
+for (var i = 0; i < num; i++) {
+    //get random color and push into array;
+    arr.push(randomColor());
+}
+//return the array
+return arr;
+}
+
+
+function randomColor() {
+// pic a "red" from 0 to 255
+var rClr = Math.floor(Math.random() * 256);   
+// mult by 256 so lyou get one higher 
+//so highest number possible is 255 when usin floor
+// pic a "green" from 0 to 255
+var gClr = Math.floor(Math.random() * 256);
+// pic a "blue" from 0 to 255
+var bClr = Math.floor(Math.random() * 256);
+
+//need to place the colors in a string that mimics the rgb(r, g, b) paying attention to the spaces after the commas
+return "rgb(" + rClr + "," + " "+ gClr + "," + " "+ bClr + ")";
+
+}
