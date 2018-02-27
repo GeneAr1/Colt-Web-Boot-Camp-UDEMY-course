@@ -14,7 +14,8 @@ var colors = [
 // we can randomize first get all the squares out ot the document
 
 var squares = document.querySelectorAll(".square");
-var pickedColor = colors[3]; // will randomize later
+// var pickedColor = colors[3]; // will randomize later
+var pickedColor = pickColor();
 
 messageDisplay = document.getElementById("message");
 
@@ -56,3 +57,13 @@ function ChangeColors (color){
         squares[i].style.backgroundColor = color;
     }
 }
+
+function pickColor(){
+    //funciton for picking the random color 
+    // need to pick a random number and use this number to pick color out of array
+    // get random number use (Math.random * 6) to get numbers we will use the length of array instead
+    // Math.random returns numbers between 0 and 1 but not including 1 than use Math.floor to lose the after decimal
+    var random = Math.floor(Math.random()* colors.length);
+    return colors[random];
+
+};
