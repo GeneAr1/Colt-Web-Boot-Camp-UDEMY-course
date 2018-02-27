@@ -13,7 +13,11 @@
 //################## VARIABLE DECLARATION SECTION##############################
 //
 // set color array by calling generaterandomcolors funtion will take one argument number of colors to generate
-var colors = generateRandomColors(6);
+
+// use variable to keep track of number of squares in hard or easy mode use that to generate the color array
+
+var numOfSquares = 6;
+var colors = generateRandomColors(numOfSquares);
 
 // loop through the array and assign the squares each on of the colors later 
 // we can randomize first get all the squares out ot the document
@@ -28,15 +32,65 @@ messageDisplay = document.getElementById("message");
 var colorDisplay = document.querySelector("#colorDisplay"); // get the picked color to show up on the web page
 colorDisplay.textContent = pickedColor;
 var resetButton = document.querySelector("#resetbtn");
-
+var easyBtn = document.querySelector("#easybtn");
+var hardBtn = document.querySelector("#hardbtn");
 
 
 // ??###################LOGIC SECTION########################
 
+// add evetn listeners to easy, hard and reset buttons
+
+// easy button allows play with only 3 color squares
+// always generate the new colors for color array
+easyBtn.addEventListener("click", function () {
+    // alert("easy button clicked");
+    numOfSquares = 3;
+    easyBtn.classList.add("selected");
+    hardBtn.classList.remove("selected");
+    // need to generate all new colors for array
+    colors = generateRandomColors(numOfSquares);
+    // need to pick a new random color from the array
+    pickedColor = pickColor();
+    //change colorDisplay in header to picked color
+    colorDisplay.textContent = pickedColor;
+    
+    for (var i=0; i < squares.length; i++) {
+        if (colors[i]) {
+            squares[i].style.background = colors [i];            
+        } else {
+            squares[i].style.display = "none";
+        }
+    }
+
+})
+
+//hard button allows play with 6 colored squares
+hardBtn.addEventListener("click", function () {
+    // alert("hard button clicked");
+    numOfSquares = 6;
+    hardBtn.classList.add("selected");
+    easyBtn.classList.remove("selected");
+
+     // need to generate all new colors for array
+     colors = generateRandomColors(numOfSquares);
+     // need to pick a new random color from the array
+     pickedColor = pickColor();
+     //change colorDisplay in header to picked color
+     colorDisplay.textContent = pickedColor;
+
+     for (var i = 0; i < squares.length; i++) {
+             squares[i].style.background = colors[i];
+             squares[i].style.display = "block";
+      
+     }
+
+})
+
+
 resetButton.addEventListener("click", function () {
     // alert("CLICKED RESET BUTTON");
     // need to generate all new colors for array
-    colors = generateRandomColors(6);
+    colors = generateRandomColors(numOfSquares);
     // need to pick a new random color from the array
     pickedColor = pickColor();
     //change colorDisplay in header to picked color
@@ -81,7 +135,7 @@ for (var i = 0; i < squares.length; i++) {
     });
 }
 
-function ChangeColors (color){
+function ChangeColors(color) {
     // loop throught the squares and change the color to the correct color or pickedColor
     for (var i = 0; i < squares.length; i++) {
         // change all squares to the correct color
@@ -89,39 +143,39 @@ function ChangeColors (color){
     }
 }
 
-function pickColor(){
+function pickColor() {
     //funciton for picking the random color 
     // need to pick a random number and use this number to pick color out of array
     // get random number use (Math.random * 6) to get numbers we will use the length of array instead
     // Math.random returns numbers between 0 and 1 but not including 1 than use Math.floor to lose the after decimal
-    var random = Math.floor(Math.random()* colors.length);
+    var random = Math.floor(Math.random() * colors.length);
     return colors[random];
 };
 
-function generateRandomColors(num){
-// make an array
-var arr = [];
-// add num random colors to array
-for (var i = 0; i < num; i++) {
-    //get random color and push into array;
-    arr.push(randomColor());
-}
-//return the array
-return arr;
+function generateRandomColors(num) {
+    // make an array
+    var arr = [];
+    // add num random colors to array
+    for (var i = 0; i < num; i++) {
+        //get random color and push into array;
+        arr.push(randomColor());
+    }
+    //return the array
+    return arr;
 }
 
 
 function randomColor() {
-// pic a "red" from 0 to 255
-var rClr = Math.floor(Math.random() * 256);   
-// mult by 256 so lyou get one higher 
-//so highest number possible is 255 when usin floor
-// pic a "green" from 0 to 255
-var gClr = Math.floor(Math.random() * 256);
-// pic a "blue" from 0 to 255
-var bClr = Math.floor(Math.random() * 256);
+    // pic a "red" from 0 to 255
+    var rClr = Math.floor(Math.random() * 256);
+    // mult by 256 so lyou get one higher 
+    //so highest number possible is 255 when usin floor
+    // pic a "green" from 0 to 255
+    var gClr = Math.floor(Math.random() * 256);
+    // pic a "blue" from 0 to 255
+    var bClr = Math.floor(Math.random() * 256);
 
-//need to place the colors in a string that mimics the rgb(r, g, b) paying attention to the spaces after the commas
-return "rgb(" + rClr + "," + " "+ gClr + "," + " "+ bClr + ")";
+    //need to place the colors in a string that mimics the rgb(r, g, b) paying attention to the spaces after the commas
+    return "rgb(" + rClr + "," + " " + gClr + "," + " " + bClr + ")";
 
 }
