@@ -9,7 +9,9 @@
 //     "rgb(0, 0, 255)",
 //     "rgb(255, 0, 255)"
 // ]
-
+//
+//################## VARIABLE DECLARATION SECTION##############################
+//
 // set color array by calling generaterandomcolors funtion will take one argument number of colors to generate
 var colors = generateRandomColors(6);
 
@@ -25,6 +27,29 @@ messageDisplay = document.getElementById("message");
 
 var colorDisplay = document.querySelector("#colorDisplay"); // get the picked color to show up on the web page
 colorDisplay.textContent = pickedColor;
+var resetButton = document.querySelector("#resetbtn");
+
+
+
+// ??###################LOGIC SECTION########################
+
+resetButton.addEventListener("click", function () {
+    // alert("CLICKED RESET BUTTON");
+    // need to generate all new colors for array
+    colors = generateRandomColors(6);
+    // need to pick a new random color from the array
+    pickedColor = pickColor();
+    //change colorDisplay in header to picked color
+    colorDisplay.textContent = pickedColor;
+
+    // change all the colors of sqares in the array to new colors
+    for (var i = 0; i < squares.length; i++) {
+        squares[i].style.backgroundColor = colors[i];
+    }
+    // set backgound in H1 back to black after win or reset
+    h1.style.background = "black";
+})
+
 
 
 for (var i = 0; i < squares.length; i++) {
@@ -44,6 +69,7 @@ for (var i = 0; i < squares.length; i++) {
             // alert("correct");
             messageDisplay.textContent = "correct";
             ChangeColors(clickedColor);
+            resetButton.textContent = "Play Again";
             h1.style.background = clickedColor;
         } else {
             // alert("wrong"); 
