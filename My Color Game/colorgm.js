@@ -35,7 +35,6 @@ var resetButton = document.querySelector("#resetbtn");
 var easyBtn = document.querySelector("#easybtn");
 var hardBtn = document.querySelector("#hardbtn");
 
-
 // ??###################LOGIC SECTION########################
 
 // add evetn listeners to easy, hard and reset buttons
@@ -53,10 +52,10 @@ easyBtn.addEventListener("click", function () {
     pickedColor = pickColor();
     //change colorDisplay in header to picked color
     colorDisplay.textContent = pickedColor;
-    
-    for (var i=0; i < squares.length; i++) {
+
+    for (var i = 0; i < squares.length; i++) {
         if (colors[i]) {
-            squares[i].style.background = colors [i];            
+            squares[i].style.background = colors[i];
         } else {
             squares[i].style.display = "none";
         }
@@ -71,21 +70,18 @@ hardBtn.addEventListener("click", function () {
     hardBtn.classList.add("selected");
     easyBtn.classList.remove("selected");
 
-     // need to generate all new colors for array
-     colors = generateRandomColors(numOfSquares);
-     // need to pick a new random color from the array
-     pickedColor = pickColor();
-     //change colorDisplay in header to picked color
-     colorDisplay.textContent = pickedColor;
+    // need to generate all new colors for array
+    colors = generateRandomColors(numOfSquares);
+    // need to pick a new random color from the array
+    pickedColor = pickColor();
+    //change colorDisplay in header to picked color
+    colorDisplay.textContent = pickedColor;
 
-     for (var i = 0; i < squares.length; i++) {
-             squares[i].style.background = colors[i];
-             squares[i].style.display = "block";
-      
-     }
-
+    for (var i = 0; i < squares.length; i++) {
+        squares[i].style.background = colors[i];
+        squares[i].style.display = "block";
+    }
 })
-
 
 resetButton.addEventListener("click", function () {
     // alert("CLICKED RESET BUTTON");
@@ -106,8 +102,6 @@ resetButton.addEventListener("click", function () {
     // set backgound in H1 back to black after win or reset
     h1.style.background = "steelblue";
 })
-
-
 
 for (var i = 0; i < squares.length; i++) {
     // add initial colors to the squares
@@ -134,7 +128,6 @@ for (var i = 0; i < squares.length; i++) {
             this.style.backgroundColor = "#232323";
             messageDisplay.textContent = "Try Again?";
         }
-
     });
 }
 
@@ -180,5 +173,4 @@ function randomColor() {
 
     //need to place the colors in a string that mimics the rgb(r, g, b) paying attention to the spaces after the commas
     return "rgb(" + rClr + "," + " " + gClr + "," + " " + bClr + ")";
-
 }
