@@ -95,13 +95,16 @@ resetButton.addEventListener("click", function () {
     pickedColor = pickColor();
     //change colorDisplay in header to picked color
     colorDisplay.textContent = pickedColor;
-
+    // get rid of message on reset otherwise it hangs around cluttering line
+    messageDisplay.textContent = "";
+    //set the reset button to new colors unless player wins then set to play agian in win code
+    this.textContent = 'New Colors';
     // change all the colors of sqares in the array to new colors
     for (var i = 0; i < squares.length; i++) {
         squares[i].style.backgroundColor = colors[i];
     }
     // set backgound in H1 back to black after win or reset
-    h1.style.background = "black";
+    h1.style.background = "steelblue";
 })
 
 

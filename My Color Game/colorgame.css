@@ -1,38 +1,89 @@
-
 body {
     background: #232323;
+    /* margin 0 will get rid of the little black around the h1 and stripe  */
+    margin: 0px;
+    /* font-family: 'Montserrat', sans-serif; */
+    font-family: 'Roboto Slab', serif;
 }
 
 h1 {
+    text-align: center;
     color: white;
+    background: steelblue;
+    margin: 0px;
+    text-transform: uppercase;
+    font-weight: lighter;
+    line-height: 1.1;
+    padding: 20px 0px;
 }
+
 /* using width 30% and float to get the divs on the same line horizontal the 30% 
     is what makes the image three accross each dive takes 30% leaving 10 left for spacing*/
 
 .square {
     width: 30%;
+    align-self: center;
     background: yellow;
     padding-bottom: 30%;
     float: left;
-    margin:1.66%;
+    margin: 1.66%;
+    border-radius: 10%;
+    transition: backround 0.5s;
+    -webkit-transition: background 0.5s;
+    -moz-transition: background 0.5s;
 }
+   
 
 #container {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
+#colorDisplay {
+    font-size: 175%;
+}
 /* 
 span {
     color:white;
 } */
 
 #stripe {
-    background:white;
-    height:30px;
+    background: white;
+    height: 30px;
+    /* font-family: 'Montserrat', sans-serif; */
     text-align: center;
+    color:black;
 }
+
 /* class to show the easy and hard button selected */
+
 .selected {
-    background: blue;
+  color:white;
+  background: steelblue;
 }
+
+button {
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    height: 100%;
+    color: steelblue;
+    font-weight: 700;
+    font-size: inherit;
+    transition: all, 0.3s;
+    -webkit-transition: all  0.5s;
+    -moz-transition: all  0.5s;
+    outline: none;
+}
+
+#message {
+    display: inline-block;
+    width: 20%;
+    height: 100%;
+}
+
+button:hover {
+    color:white;
+    background: steelblue;
+}
+
