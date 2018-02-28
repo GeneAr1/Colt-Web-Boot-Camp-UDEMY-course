@@ -98,7 +98,7 @@ resetButton.addEventListener("click", function () {
     // get rid of message on reset otherwise it hangs around cluttering line
     messageDisplay.textContent = "";
     //set the reset button to new colors unless player wins then set to play agian in win code
-    this.textContent = 'New Colors';
+    this.textContent = "New Colors?";
     // change all the colors of sqares in the array to new colors
     for (var i = 0; i < squares.length; i++) {
         squares[i].style.backgroundColor = colors[i];
@@ -124,15 +124,15 @@ for (var i = 0; i < squares.length; i++) {
 
         if (clickedColor === pickedColor) {
             // alert("correct");
-            messageDisplay.textContent = "correct";
+            messageDisplay.textContent = "Correct!";
             ChangeColors(clickedColor);
-            resetButton.textContent = "Play Again";
+            resetButton.textContent = "Play Again?";
             h1.style.background = clickedColor;
         } else {
             // alert("wrong"); 
             //you want to fade the color square if wrong incorrect
             this.style.backgroundColor = "#232323";
-            messageDisplay.textContent = "Try Again";
+            messageDisplay.textContent = "Try Again?";
         }
 
     });
