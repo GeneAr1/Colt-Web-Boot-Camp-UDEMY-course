@@ -1,12 +1,7 @@
-body{
 
-    background: goldenrod;
-}
-
-.first {
-    color:white;
-}
-
-#bad {
-    background:pink;
+#container {
+    width: 360px;
+    margin: 0 auto;
+    /* background: lightcyan; */
+    border: 2px solid gray;
 }
