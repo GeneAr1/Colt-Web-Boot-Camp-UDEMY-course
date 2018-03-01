@@ -1,20 +1,7 @@
-// alert("connected");
-
-// set up array of the 6 colors
-// var colors = [
-//     "rgb(255, 0, 0)",
-//     "rgb(255, 255, 0)",
-//     "rgb(0, 255, 0)",
-//     "rgb(0, 255, 255)",
-//     "rgb(0, 0, 255)",
-//     "rgb(255, 0, 255)"
-// ]
-//
+// 
+// &&&&&&&&&&&&&&&&&&&&&&&& This is copy of colorgm.js used for final refactor and code cleanup
+// &&&&&&&&&&&&&&&&&&&&&&&& Wanted to keep both for learning purposes 
 //################## VARIABLE DECLARATION SECTION##############################
-//
-// set color array by calling generaterandomcolors funtion will take one argument number of colors to generate
-
-// use variable to keep track of number of squares in hard or easy mode use that to generate the color array
 
 var numOfSquares = 6;
 var colors = generateRandomColors(numOfSquares);
@@ -48,35 +35,70 @@ var modeButtons = document.querySelectorAll(".mode");
 // easy button allows play with only 3 color squares
 // always generate the new colors for color array
 
-// create event listeners for modeButtons
-for (var i = 0; i < modeButtons.length; i++) {
-    modeButtons[i].addEventListener("click", function () {
-        modeButtons[0].classList.remove("selected");
-        modeButtons[1].classList.remove("selected");
-        this.classList.add("selected");
-        //figuire out how many squares to show
-        //pick newcolors for the squares
-        //pick a new pickedColor
-        //update page todo all this
-        if (this.textContent === "Easy") {
-            numOfSquares = 3;
-        } else {
-            numOfSquares = 6;
-        }
-        //the above could be written as a tertirary function
-        //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// make one function Init to clean up code and set the game up at inital start
 
-        //this.textContent === "Easy" ? numOfSquares = 3: numOfSquares = 6;
+init();
 
-        //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        // does exact same as above 4 lines;        
-        // good use case for terniary operator simple arguement with only 2 possible choises
 
-        reset();
+// could break the init funcion into two seperate functions to make more readable
+// one function getModeButtons() and one function prepSquares() not doing it now but in 
+// real world should do in refactor
+function init() {
+    // create event listeners for modeButtons
+    for (var i = 0; i < modeButtons.length; i++) {
+        modeButtons[i].addEventListener("click", function () {
+            modeButtons[0].classList.remove("selected");
+            modeButtons[1].classList.remove("selected");
+            this.classList.add("selected");
+            //figuire out how many squares to show
+            //pick newcolors for the squares
+            //pick a new pickedColor
+            //update page todo all this
+            if (this.textContent === "Easy") {
+                numOfSquares = 3;
+            } else {
+                numOfSquares = 6;
+            }
+            //the above could be written as a tertirary function
+            //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            //this.textContent === "Easy" ? numOfSquares = 3: numOfSquares = 6;
+            //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            // does exact same as above 4 lines;        
+            // good use case for terniary operator simple arguement with only 2 possible choises
+            reset();
+        });
+    }
+    for (var i = 0; i < squares.length; i++) {
 
-    
-    });
+        // add a click event listner to the squres
+        squares[i].addEventListener("click", function () {
+            // alert("clicked a square") // comment out this line after check
+            //cgrab the color of the square 
+            //alert(this.style.backgroundColor);  // do not forget the style to access the color just declare a variable
+            var clickedColor = this.style.backgroundColor;
+            //compare color to picked color
+            if (clickedColor === pickedColor) {
+                // alert("correct");
+                messageDisplay.textContent = "Correct!";
+                ChangeColors(clickedColor);
+                resetButton.textContent = "Play Again?";
+                h1.style.background = clickedColor;
+            } else {
+                // alert("wrong"); 
+                //you want to fade the color square if wrong incorrect
+                this.style.backgroundColor = "#232323";
+                messageDisplay.textContent = "Try Again?";
+            }
+        });
+    }
+    reset();
 }
+
+
+
+
+
+
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //function reset will do all the setup for all other functions
 //picking picked color
@@ -84,6 +106,7 @@ for (var i = 0; i < modeButtons.length; i++) {
 // setting button labels
 function reset() {
 
+    
     // need to generate all new colors for array
     colors = generateRandomColors(numOfSquares);
     // need to pick a new random color from the array
@@ -96,114 +119,23 @@ function reset() {
     resetButton.textContent = "New Colors?";
     // change all the colors of sqares in the array to new colors
     for (var i = 0; i < squares.length; i++) {
-        if (colors[i]){
+        if (colors[i]) {
             squares[i].style.display = "block";
-            squares[i].style.backgroundColor = colors[i]; 
+            squares[i].style.backgroundColor = colors[i];
         } else {
             squares[i].style.display = "none";
         }
-        
+
     }
     // set backgound in H1 back to black after win or reset
-    h1.style.background = "steelblue";    
+    h1.style.background = "steelblue";
 }
-//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
-// REFACTOR THE EASY AND HARD BUTTONS BOTH SAME CODE BREAK
-// OUT INTO DIFFERENT FUNCTIONS
-// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-// 
-// easyBtn.addEventListener("click", function () {
-//     // alert("easy button clicked");
-//     numOfSquares = 3;
-//     easyBtn.classList.add("selected");
-//     hardBtn.classList.remove("selected");
-//     // need to generate all new colors for array
-//     colors = generateRandomColors(numOfSquares);
-//     // need to pick a new random color from the array
-//     pickedColor = pickColor();
-//     //change colorDisplay in header to picked color
-//     colorDisplay.textContent = pickedColor;
-
-//     for (var i = 0; i < squares.length; i++) {
-//         if (colors[i]) {
-//             squares[i].style.background = colors[i];
-//         } else {
-//             squares[i].style.display = "none";
-//         }
-//     }
-
-// })
-
-// //hard button allows play with 6 colored squares
-// hardBtn.addEventListener("click", function () {
-//     // alert("hard button clicked");
-//     numOfSquares = 6;
-//     hardBtn.classList.add("selected");
-//     easyBtn.classList.remove("selected");
-//     // need to generate all new colors for array
-//     colors = generateRandomColors(numOfSquares);
-//     // need to pick a new random color from the array
-//     pickedColor = pickColor();
-//     //change colorDisplay in header to picked color
-//     colorDisplay.textContent = pickedColor;
-
-//     for (var i = 0; i < squares.length; i++) {
-//         squares[i].style.background = colors[i];
-//         squares[i].style.display = "block";
-//     }
-// })
-// ################################################################################
 
 resetButton.addEventListener("click", function () {
-    // alert("CLICKED RESET BUTTON");
-    // need to generate all new colors for array
     reset();
-    // Refactor can replace all below code with the above reset function to make code more try
-    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    // colors = generateRandomColors(numOfSquares);
-    // // need to pick a new random color from the array
-    // pickedColor = pickColor();
-    // //change colorDisplay in header to picked color
-    // colorDisplay.textContent = pickedColor;
-    // // get rid of message on reset otherwise it hangs around cluttering line
-    // messageDisplay.textContent = "";
-    // //set the reset button to new colors unless player wins then set to play agian in win code
-    // this.textContent = "New Colors?";
-    // // change all the colors of sqares in the array to new colors
-    // for (var i = 0; i < squares.length; i++) {
-    //     squares[i].style.backgroundColor = colors[i];
-    // }
-    // // set backgound in H1 back to black after win or reset
-    // h1.style.background = "steelblue";
-    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 })
 
-for (var i = 0; i < squares.length; i++) {
-    // add initial colors to the squares
-    squares[i].style.backgroundColor = colors[i];
-    // add a click event listner to the squres
-    squares[i].addEventListener("click", function () {
-        // alert("clicked a square") // comment out this line after check
-        //cgrab the color of the square 
-        //alert(this.style.backgroundColor);  // do not forget the style to access the color just declare a variable
-        var clickedColor = this.style.backgroundColor;
-        //compare color to picked color
 
-        if (clickedColor === pickedColor) {
-            // alert("correct");
-            messageDisplay.textContent = "Correct!";
-            ChangeColors(clickedColor);
-            resetButton.textContent = "Play Again?";
-            h1.style.background = clickedColor;
-        } else {
-            // alert("wrong"); 
-            //you want to fade the color square if wrong incorrect
-            this.style.backgroundColor = "#232323";
-            messageDisplay.textContent = "Try Again?";
-        }
-    });
-}
 
 function ChangeColors(color) {
     // loop throught the squares and change the color to the correct color or pickedColor
