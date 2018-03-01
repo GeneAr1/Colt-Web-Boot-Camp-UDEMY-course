@@ -80,6 +80,8 @@ button {
     display: inline-block;
     width: 20%;
     height: 100%;
+    font-family: 'Roboto Slab',serif;
+    font-weight: 700;
 }
 
 button:hover {
