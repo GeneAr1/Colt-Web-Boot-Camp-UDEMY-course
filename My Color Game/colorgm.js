@@ -43,7 +43,6 @@ var resetButton = document.querySelector("#resetbtn");
 // refactor new variable caled modeButtons use selectorAll to get all the buttons in class
 var modeButtons = document.querySelectorAll(".mode");
 
-
 // ??###################LOGIC SECTION########################
 // add evetn listeners to easy, hard and reset buttons
 // easy button allows play with only 3 color squares
