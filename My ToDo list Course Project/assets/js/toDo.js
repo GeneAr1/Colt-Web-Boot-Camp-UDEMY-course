@@ -46,7 +46,7 @@ $("#todolisn").keypress(function (event) {
     if (event.which === 13) {
         // need to get value on input use .val and save to variable
         // getter
-        var toDoText = $(this).val(); 
+        var toDoText = $(this).val();
         //setter
         $(this).val("");
         //creat a new li put toDoText in field and add/append to ul list        
