@@ -16,6 +16,12 @@ ul {
 
 body {
     font-family: 'Roboto', sans-serif;
+    background: #3D7EAA;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFE47A, #3D7EAA);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFE47A, #3D7EAA);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 li {
@@ -39,7 +45,7 @@ input {
     padding: 13px 13px 13px 20px;
     /* use border-box to keep from overrunning container */
     box-sizing: border-box;
-    border: 0;
+    border: 3px solid rgba(0, 0, 0, 0);
 }
 input:focus {
     border: 3px solid #2980b9;
@@ -56,4 +62,22 @@ input:focus {
 .completed {
     color: gray;
     text-decoration: line-through;
+}
+.fa-plus {
+    float: right;
+}
+li span {
+    background: #e74c3c;
+    height: 40px;
+    margin-right: 20px;
+    color: white;
+    width: 0px;
+    display: inline-block;
+    text-align: center;
+    transition: 0.3s linear;
+    opacity: 0;
+}
+li:hover span {
+    width: 40px;
+    opacity: 1;
 }

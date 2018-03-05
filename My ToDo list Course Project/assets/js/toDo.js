@@ -31,7 +31,7 @@ $("ul").on("click", "li", function () {
 // need to change click to on and same logic as above
 $("ul").on("click", "span", function (event) {
     $(this).parent().fadeOut(700, function () {
-        //call remove on .this no need for parent already there
+        //call remove on .this no need for parent already theressssss
         $(this).remove();
     });
     // $(this).parent().remove();
@@ -53,8 +53,7 @@ $("#todolisn").keypress(function (event) {
         // use append, need to first select element to append to.
         // append will take HTML and use + to add toDoText
         // $("ul").append("<li>This is a new appended LI</li>");
-        $("ul").append("<li><span>X   </span>" + toDoText + "</li>");
-
+        //append the font awesome trash can in the span to get the icon on the list
+        $("ul").append("<li><span><i class='fa fa-trash'></i> </span>" + toDoText + "</li>");
     }
-
 });
