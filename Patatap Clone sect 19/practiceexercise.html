@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Paper Js practice Exercise</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="paperjs-v0.11.5/dist/paper-full.js"></script>
+    <link rel="stylesheet" type="text/css" href="practiceexercise.css" />
+    <!-- <script src="main.js"></script> -->
+
+
+    <script type="text/paperscript" canvas="myCanvas">
+        var gx = 0;
+        var rx = 1;
+        var bx = 0;
+        var fill;
+        var xcood = 15;
+        var ycood = 20;
+
+        for (var y = 1; y <= 12; y++){
+            xcood = 15;
+            rx = 1;
+            for (var x = 1; x <= 10; x++){
+               var myCircle = new Path.Circle(new Point(xcood, ycood), 10);
+               fill = new Color(rx, 0, bx);
+               myCircle.fillColor = fill;
+               myCircle.strokeColor = 'black'; 
+               rx -= 0.1;
+               xcood = xcood + 50;
+               <!-- document.write("\n"); -->
+            }
+            ycood = ycood + 30;
+            bx += 0.10;
+        }
+
+    
+
+    </script>
+
+
+
+</head>
+
+
+<body>
+    <!-- <h1>this is just a test</h1> -->
+
+    <canvas id="myCanvas" resize></canvas>
+
+</body>
+
+</html>
