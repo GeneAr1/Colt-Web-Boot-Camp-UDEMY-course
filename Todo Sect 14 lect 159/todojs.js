@@ -19,7 +19,7 @@ for (let i = 0; i < allLis.length; i++) {
         this.classList.remove("selected");
 
     });
-// add a class done to the html and use gray out of strikethrough
+    // add a class done to the html and use gray out of strikethrough
     allLis[i].addEventListener("click", function () {
 
         this.classList.toggle("done");
