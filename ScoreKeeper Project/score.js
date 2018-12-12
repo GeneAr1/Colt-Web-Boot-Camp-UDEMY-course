@@ -81,5 +81,6 @@ numInput.addEventListener("change", function() {
     // maxMoves.textContent = "changed";
     maxMoves.textContent = numInput.value;
     winScore = Number(numInput.value);
-
+    //added resetGame() to take care of ingame maxplay change
+    resetGame();
 });
